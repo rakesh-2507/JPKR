@@ -11,7 +11,7 @@
 
     <style>
         body {
-            overflow: hidden;
+            scrollbar-width: none;
         }
 
         @font-face {
@@ -81,14 +81,19 @@
 
         .breadcrumb-bar {
             position: sticky;
-            top: 9%;
+            top: 11%;
             z-index: 2000;
             padding: 0rem 3rem 0rem 3rem;
         }
 
-        .breadcrumb-item.active {
+        .breadcrumb-item a {
             color: #005c62;
             border-bottom: 4px solid #005c62;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: #005c62;
         }
 
         .submenu-card {
@@ -150,6 +155,11 @@
             text-decoration: underline;
         }
 
+        .submenu-card a.active {
+            color: #005c62;
+            font-weight: 600;
+        }
+
         .offcanvas-body {
             padding-top: 1rem;
             scrollbar-width: none;
@@ -195,17 +205,6 @@
 
         .side-nav {
             z-index: 2010;
-        }
-
-        @media (max-width: 992px) {
-            .submenu-card {
-                position: static;
-                transform: none;
-                flex-direction: column;
-                width: 100%;
-                box-shadow: none;
-                padding: 0.5rem 0;
-            }
         }
 
         .offcanvas.offcanvas-start {
@@ -263,7 +262,7 @@
 <body>
 
     <!-- Top Navbar -->
-    <nav class="navbar navbar-light shadow-sm">
+    <nav class="navbar navbar-light shadow-sm w-100">
         <div class="container-fluid border-bottom top-header">
             <div>
                 <a class="navbar-brand d-flex align-items-center" href="#">
@@ -276,8 +275,8 @@
             <div></div>
 
         </div>
-        <div class="d-flex justify-content-center py-2 w-100">
-            <ul class="navbar-nav d-flex flex-row">
+        <div class="d-flex justify-content-center py-2" style="padding-left: 3rem;width: 100%;">
+            <ul class="navbar-nav d-flex flex-row" style="width: 100%; overflow-x: overlay;scrollbar-width: none;">
                 <li class="nav-item px-2">
                     <a class="nav-link active" href="/index.html">Home</a>
                     <div class="submenu-card">
