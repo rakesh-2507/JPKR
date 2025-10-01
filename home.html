@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPKR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            scrollbar-width: none;
+        }
+
+        @font-face {
+            font-family: 'Noricon';
+            src: url('../fonts/Norican.otf') format('opentype'),
+                url('../fonts/Norican-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .logo {
+            font-family: 'Noricon', sans-serif;
+            letter-spacing: 0.15rem;
+            font-size: 1.5rem;
+            color: #000;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 2010;
+            padding: 0%;
+        }
+
+        .top-header {
+            padding: 0rem 3rem 0rem 3rem;
+        }
+
+        .navbar-nav {
+            font-size: 0.8rem;
+            align-items: center;
+        }
+
+        .navbar-nav a {
+            padding: 0%;
+        }
+
+        .side-nav .navbar-nav {
+            font-size: 15px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #000;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 0.2rem;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #005c62;
+            border-bottom: 4px solid #005c62;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #005c62;
+            border-bottom: 4px solid #005c62;
+        }
+
+        .navbar-nav li {
+            padding-right: 0% !important;
+        }
+
+        .breadcrumb-bar {
+            position: sticky;
+            top: 11%;
+            z-index: 2000;
+            padding: 0rem 3rem 0rem 3rem;
+        }
+
+        .breadcrumb-item a {
+            color: #005c62;
+            border-bottom: 4px solid #005c62;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: #005c62;
+        }
+
+        .submenu-card {
+            position: absolute;
+            top: 100%;
+            left: 32%;
+            transform: translateX(-50%);
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: #fff;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 6px 6px rgba(0, 0, 0, 0.15);
+            z-index: 2010;
+            border-radius: 8px;
+            min-width: 50%;
+            flex-direction: column;
+
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .nav-item:hover .submenu-card,
+        .submenu-card:hover {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .submenu-card a {
+            display: block;
+            color: #000;
+            text-decoration: none;
+            transition: 0.3s;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .submenu-card a:hover {
+            color: #005c62;
+
+        }
+
+        /* Side menu submenu style */
+        .submenu {
+            display: none;
+        }
+
+        .submenu.show {
+            display: block;
+        }
+
+        .submenu a.nav-link {
+            font-size: 0.95rem;
+            padding-left: 1.5rem;
+            color: #000;
+        }
+
+        .submenu a.nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .submenu-card a.active {
+            color: #005c62;
+            font-weight: 600;
+        }
+
+        .offcanvas-body {
+            padding-top: 1rem;
+            scrollbar-width: none;
+        }
+
+        .offcanvas-body .navbar-nav {
+            display: contents;
+        }
+
+        .offcanvas-body .nav-item {
+            background-color: #efefef;
+            border-bottom: 4px solid #fff;
+            margin-bottom: 0.5rem;
+            padding: 0.1rem;
+        }
+
+        .offcanvas-body .nav-link i {
+            font-size: 0.6rem;
+            background: #000;
+            color: #fff;
+            width: 12px;
+            height: 12px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .offcanvas-body .submenu a.nav-link {
+            padding-left: 0.5rem;
+            font-size: 0.75rem;
+            white-space: wrap;
+        }
+
+        .offcanvas-body .submenu a.nav-link:hover {
+            text-decoration: none;
+            border: none;
+        }
+
+        .nav-link i {
+            font-size: 0.6rem;
+        }
+
+        .side-nav {
+            z-index: 2010;
+        }
+
+        .offcanvas.offcanvas-start {
+            width: 300px;
+        }
+
+        /* Carousel styling */
+        .carousel-item {
+            height: 90vh;
+            background-color: #efefef;
+        }
+
+        .carousel-item .row {
+            height: 100%;
+            align-items: center;
+        }
+
+        .carousel-item h2,
+        .carousel-item p {
+            color: #000;
+        }
+
+        .carousel-item h2 {
+            font-size: 3rem;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .carousel-control-prev i,
+        .carousel-control-next i {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item h2 {
+                font-size: 1.8rem;
+            }
+
+            .carousel-item p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-light shadow-sm w-100">
+        <div class="container-fluid border-bottom top-header">
+            <div>
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <button class="btn p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </a>
+            </div>
+            <div><span class="fw-bold logo">JPKR</span></div>
+            <div></div>
+
+        </div>
+        <div class="d-flex justify-content-center py-2" style="padding-left: 3rem;width: 100%;">
+            <ul class="navbar-nav d-flex flex-row" style="width: 100%; overflow-x: overlay;scrollbar-width: none;">
+                <li class="nav-item px-2">
+                    <a class="nav-link active" href="/index.html">Home</a>
+                    <div class="submenu-card">
+                        <a href="/home.html#welcome">Welcome Note</a>
+                        <a href="/home.html#principles">Life Motto & Guiding Principles</a>
+                        <a href="/home.html#roles">Current Roles & Engagements</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/judicial.html">Judicial Career</a>
+                    <div class="submenu-card">
+                        <a href="/judicial.html#tenure">Service Tenure & Key Positions</a>
+                        <a href="/judicial.html#judgments">Landmark Judgments & Legal Contributions</a>
+                        <a href="/judicial.html#reforms">Reform Work, Committees & Commissions</a>
+                        <a href="/judicial.html#legacy">Judicial Legacy & Public Impact</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/post.html">Post-Retirement Engagements</a>
+                    <div class="submenu-card">
+                        <a href="/post.html#roles">Advisory Roles & Consultations</a>
+                        <a href="/post.html#judgments">Arbitration & Mediation</a>
+                        <a href="/post.html#reforms">Lectures, Talks & Knowledge Sharing</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/literary.html">Literary Pursuits </a>
+                    <div class="submenu-card">
+                        <a href="/literary.html#works">Authored Works</a>
+                        <a href="/literary.html#journals">Contributions to Journals & Anthologies</a>
+                        <a href="/literary.html#awards">Literary Awards & Recognition</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/social.html">Social Service</a>
+                    <div class="submenu-card">
+                        <a href="/social.html#outreach">Community Outreach Programs</a>
+                        <a href="/social.html#education">Legal Awareness & Public Education</a>
+                        <a href="/social.html#ngo">NGO Trust Involvement</a>
+                        <a href="/social.html#mentorship">Mentorship & Youth Guidance</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/spiritual.html">Spiritual Service & Facilitation</a>
+                    <div class="submenu-card">
+                        <a href="/spiritual.html#movements">Association with Spiritual Movements & Institutions</a>
+                        <a href="/spiritual.html#gurus">My Gurus</a>
+                        <a href="/spiritual.html#discourses">Talks, Discourses & Spiritual Writings</a>
+                        <a href="/spiritual.html#guidance">Guidance & Facilitation for Seekers</a>
+                        <a href="/spiritual.html#integration">Integration of Spirituality in Social Upliftment</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/honours.html">Honours & Recognition</a>
+                    <div class="submenu-card">
+                        <a href="/honours.html#awards">Awards & National Honours</a>
+                        <a href="/honours.html#international">International Tributes & Citations</a>
+                        <a href="/honours.html#felicitations">Felicitations by Literary, Legal & Social Bodies</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/gallery.html">Gallery</a>
+                    <div class="submenu-card">
+                        <a href="/gallery.html#photos">Photographs (Judicial, Literary, Social, Spiritual)</a>
+                        <a href="/gallery.html#videos">Videos & Speeches</a>
+                        <a href="/gallery.html#media">Media Features</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/reflections.html">Reflections & Writings</a>
+                    <div class="submenu-card">
+                        <a href="/reflections.html#speeches">Selected Speeches & Addresses</a>
+                        <a href="/reflections.html#articles">Opinion Articles</a>
+                        <a href="/reflections.html#personal">Personal Reflections on Law, Life & Spirituality</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/media.html">Media & Press</a>
+                    <div class="submenu-card">
+                        <a href="/media.html#interviews">Interviews & Profiles</a>
+                        <a href="/media.html#reviews">Reviews of Works & Public Engagements</a>
+                        <a href="/media.html#documentaries">Documentary Features</a>
+                    </div>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="/contact.html">Contact</a>
+                    <div class="submenu-card">
+                        <a href="/contact.html#professional">Professional Contact Details</a>
+                        <a href="/contact.html#trusts">Trusts & Institutions Representation</a>
+                        <a href="/contact.html#forums">Social & Literary Forum Links</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="bg-light border-bottom py-2 d-none d-lg-block breadcrumb-bar">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0" id="breadcrumb">
+                    <!-- Will be filled dynamically -->
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Side Navbar -->
+    <div class="offcanvas offcanvas-start side-nav" tabindex="-1" id="sideNavbar">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title logo">JPKR</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center active" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Home <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/home.html#welcome">Welcome Note</a></li>
+                        <li><a class="nav-link" href="/home.html#principles">Life Motto & Guiding Principles</a></li>
+                        <li><a class="nav-link" href="/home.html#roles">Current Roles & Engagements</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Judicial Career <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/judicial.html#tenure">Service Tenure & Key Positions</a></li>
+                        <li><a class="nav-link" href="/judicial.html#judgments">Landmark Judgments & Legal
+                                Contributions</a></li>
+                        <li><a class="nav-link" href="/judicial.html#reforms">Reform Work, Committees & Commissions</a>
+                        </li>
+                        <li><a class="nav-link" href="/judicial.html#legacy">Judicial Legacy & Public Impact</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Post-Retirement Engagements <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/post.html#roles">Advisory Roles & Consultations</a></li>
+                        <li><a class="nav-link" href="/post.html#judgments">Arbitration & Mediation</a></li>
+                        <li><a class="nav-link" href="/post.html#reforms">Lectures, Talks & Knowledge Sharing</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Literary Pursuits <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/literary.html#works">Authored Works</a></li>
+                        <li><a class="nav-link" href="/literary.html#journals">Contributions to Journals &
+                                Anthologies</a></li>
+                        <li><a class="nav-link" href="/literary.html#awards">Literary Awards & Recognition</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Social Service <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/social.html#outreach">Community Outreach Programs</a></li>
+                        <li><a class="nav-link" href="/social.html#education">Legal Awareness & Public Education</a>
+                        </li>
+                        <li><a class="nav-link" href="/social.html#ngo">NGO Trust Involvement</a></li>
+                        <li><a class="nav-link" href="/social.html#mentorship">Mentorship & Youth Guidance</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Spiritual Service & Facilitation <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/spiritual.html#movements">Association with Spiritual Movements &
+                                Institutions</a></li>
+                        <li><a class="nav-link" href="/spiritual.html#gurus">My Gurus</a></li>
+                        <li><a class="nav-link" href="/spiritual.html#discourses">Talks, Discourses & Spiritual
+                                Writings</a></li>
+                        <li><a class="nav-link" href="/spiritual.html#guidance">Guidance & Facilitation for Seekers</a>
+                        </li>
+                        <li><a class="nav-link" href="/spiritual.html#integration">Integration of Spirituality in Social
+                                Upliftment</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Honours & Recognition <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/honours.html#awards">Awards & National Honours</a></li>
+                        <li><a class="nav-link" href="/honours.html#international">International Tributes &
+                                Citations</a></li>
+                        <li><a class="nav-link" href="/honours.html#felicitations">Felicitations by Literary, Legal &
+                                Social Bodies</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Gallery <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/gallery.html#photos">Photographs (Judicial, Literary, Social,
+                                Spiritual)</a></li>
+                        <li><a class="nav-link" href="/gallery.html#videos">Videos & Speeches</a></li>
+                        <li><a class="nav-link" href="/gallery.html#media">Media Features</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Reflections & Writings <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/reflections.html#speeches">Selected Speeches & Addresses</a></li>
+                        <li><a class="nav-link" href="/reflections.html#articles">Opinion Articles</a></li>
+                        <li><a class="nav-link" href="/reflections.html#personal">Personal Reflections on Law, Life &
+                                Spirituality</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Media & Press <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/media.html#interviews">Interviews & Profiles</a></li>
+                        <li><a class="nav-link" href="/media.html#reviews">Reviews of Works & Public Engagements</a>
+                        </li>
+                        <li><a class="nav-link" href="/media.html#documentaries">Documentary Features</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex justify-content-between align-items-center" href="#"
+                        onclick="toggleSubmenu(event)">
+                        Contact <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+                    <ul class="submenu list-unstyled">
+                        <li><a class="nav-link" href="/contact.html#professional">Professional Contact Details</a></li>
+                        <li><a class="nav-link" href="/contact.html#trusts">Trusts & Institutions Representation</a>
+                        </li>
+                        <li><a class="nav-link" href="/contact.html#forums">Social & Literary Forum Links</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <section id="welcome" class="py-5" style="min-height:80vh; background:#f1f1f1;">
+        <div class="container">
+            <h2>Welcome Note</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel massa eget lorem pretium feugiat.
+            </p>
+        </div>
+    </section>
+
+    <section id="principles" class="py-5" style="min-height:90vh; background:#e2e2e2;">
+        <div class="container">
+            <h2>Life Motto & Guiding Principles</h2>
+            <p>Proin tincidunt, ligula nec convallis suscipit, eros purus cursus enim, in ullamcorper nunc justo a nisi.
+            </p>
+        </div>
+    </section>
+
+    <section id="roles" class="py-5" style="min-height:90vh; background:#d3d3d3;">
+        <div class="container">
+            <h2>Current Roles & Engagements</h2>
+            <p>Phasellus sit amet diam ac purus tincidunt sagittis. Curabitur a sem eget elit feugiat volutpat.</p>
+        </div>
+    </section>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const breadcrumb = document.getElementById("breadcrumb");
+            const headerOffset = document.querySelector(".navbar").offsetHeight; // height of sticky navbar
+
+            // Collect all sections with an id
+            const sections = Array.from(document.querySelectorAll("section[id]")).map(section => ({
+                id: section.id,
+                title: section.dataset.title || section.querySelector("h2")?.textContent || section.id
+            }));
+
+            // Update breadcrumb function
+            function updateBreadcrumb(currentId) {
+                breadcrumb.innerHTML = "";
+                const currentSection = sections.find(s => s.id === currentId);
+                if (!currentSection) return;
+
+                // You can optionally add top-level link "Home"
+                const homeLi = document.createElement("li");
+                homeLi.className = "breadcrumb-item";
+                const homeLink = document.createElement("a");
+                homeLink.href = "home.html";
+                homeLink.textContent = "Home";
+                homeLi.appendChild(homeLink);
+                breadcrumb.appendChild(homeLi);
+
+                // Current section
+                const li = document.createElement("li");
+                li.className = "breadcrumb-item active";
+                li.setAttribute("aria-current", "page");
+                li.textContent = currentSection.title;
+                breadcrumb.appendChild(li);
+            }
+
+            function onScroll() {
+                const scrollPos = window.scrollY + headerOffset + 10; // offset for sticky header
+                let currentSectionId = null;
+
+                for (let i = 0; i < sections.length; i++) {
+                    const el = document.getElementById(sections[i].id);
+                    if (el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
+                        currentSectionId = sections[i].id;
+                        updateBreadcrumb(sections[i].id);
+                        break;
+                    }
+                }
+
+                // Highlight submenu anchors (desktop top nav)
+                document.querySelectorAll('.submenu-card a').forEach(link => {
+                    link.classList.remove('active');
+                    if (currentSectionId && link.getAttribute('href').includes(`#${currentSectionId}`)) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // Highlight submenu anchors (side nav offcanvas)
+                document.querySelectorAll('.submenu a.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (currentSectionId && link.getAttribute('href').includes(`#${currentSectionId}`)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Initial update
+            if (sections.length) updateBreadcrumb(sections[0].id);
+
+            window.addEventListener("scroll", onScroll);
+        });
+
+
+        function toggleSubmenu(event) {
+            event.preventDefault();
+            const submenu = event.currentTarget.nextElementSibling;
+            submenu.classList.toggle('show');
+        }
+    </script>
+    <script>
+        let timeout;
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const submenu = item.querySelector('.submenu-card');
+
+            item.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                submenu.style.display = 'flex';
+            });
+
+            item.addEventListener('mouseleave', () => {
+                timeout = setTimeout(() => {
+                    submenu.style.display = 'none';
+                }, 200); // 200ms delay
+            });
+
+            submenu.addEventListener('mouseenter', () => clearTimeout(timeout));
+            submenu.addEventListener('mouseleave', () => {
+                timeout = setTimeout(() => {
+                    submenu.style.display = 'none';
+                }, 200);
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
