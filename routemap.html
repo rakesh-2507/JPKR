@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPKR Road with Milestones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            font-family: "Poppins", Arial, sans-serif;
+            position: relative;
+            background: #f3f3f3;
+        }
+
+        .background {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .route {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: rotateY(180deg);
+            filter: brightness(0.9);
+        }
+
+        /* === Milestone Base Styles === */
+        .milestone {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            text-align: center;
+            color: #222;
+            font-weight: 500;
+            gap: 0.5rem;
+        }
+
+        .milestone .circle {
+            width: 60px;
+            height: 60px;
+            background-color: #ffa200;
+            border-radius: 50%;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .milestone .line {
+            width: 3px;
+            height: 50px;
+            background: #000;
+            margin: 5px 0;
+        }
+
+        .milestone .text {
+            max-width: 200px;
+            font-size: 14px;
+            color: #222;
+        }
+
+        /* === Individual Milestone Positions (Desktop) === */
+        .milestone.m2016 {
+            top: 88%;
+            left: 16%;
+        }
+
+        .milestone.m2017 {
+            top: 71%;
+            left: 20%;
+        }
+
+        .milestone.m2018 {
+            top: 47%;
+            left: 5%;
+            flex-direction: row-reverse;
+        }
+
+        .milestone.m2019 {
+            top: 38%;
+            left: 25%;
+            flex-direction: row-reverse;
+        }
+
+        .milestone.m2020 {
+            top: 56%;
+            left: 32%;
+        }
+
+        .milestone.m2021 {
+            top: 30%;
+            left: 50%;
+        }
+
+        .milestone.m2022 {
+            top: 46%;
+            left: 54%;
+        }
+
+        .milestone.m2023 {
+            top: 38%;
+            left: 77%;
+        }
+
+        .milestone.m2024 {
+            top: 20%;
+            left: 68%;
+        }
+
+        .milestone.m2025 {
+            top: 5%;
+            left: 76%;
+        }
+
+        /* === Responsive Scaling === */
+
+        /* Tablets (max-width: 992px) */
+        @media (max-width: 992px) {
+            .milestone .circle {
+                width: 50px;
+                height: 50px;
+                font-size: 12px;
+            }
+
+            .milestone .line {
+                height: 40px;
+            }
+
+            .milestone .text {
+                font-size: 13px;
+                max-width: 160px;
+            }
+
+            .milestone.m2016 {
+                top: 88%;
+                left: 18%;
+            }
+
+            .milestone.m2017 {
+                top: 73%;
+                left: 23%;
+            }
+
+            .milestone.m2018 {
+                top: 50%;
+                left: 18%;
+            }
+
+            .milestone.m2019 {
+                top: 40%;
+                left: 32%;
+            }
+
+            .milestone.m2020 {
+                top: 66%;
+                left: 47%;
+            }
+
+            .milestone.m2021 {
+                top: 32%;
+                left: 52%;
+            }
+
+            .milestone.m2022 {
+                top: 57%;
+                left: 68%;
+            }
+
+            .milestone.m2023 {
+                top: 25%;
+                left: 78%;
+            }
+
+            .milestone.m2024 {
+                top: 47%;
+                left: 86%;
+            }
+
+            .milestone.m2025 {
+                top: 8%;
+                left: 84%;
+            }
+
+            .route {
+                object-fit: fill;
+            }
+        }
+
+        /* Mobile (max-width: 768px) */
+        @media (max-width: 768px) {
+            .milestone .circle {
+                width: 40px;
+                height: 40px;
+                font-size: 11px;
+            }
+
+            .milestone .line {
+                height: 30px;
+            }
+
+            .milestone .text {
+                font-size: 12px;
+                max-width: 140px;
+            }
+
+            .milestone.m2017 {
+                top: 75%;
+                left: 10%;
+            }
+
+            .milestone.m2018 {
+                top: 62%;
+                left: 17%;
+            }
+
+            .milestone.m2019 {
+                top: 51%;
+                left: 35%;
+            }
+
+            .milestone.m2020 {
+                top: 43%;
+                left: 2%;
+                flex-direction: row-reverse;
+            }
+
+            .milestone.m2021 {
+                top: 34%;
+                left: 29%;
+                flex-direction: row-reverse;
+            }
+
+            .milestone.m2022 {
+                top: 42%;
+                left: 66%;
+            }
+
+            .milestone.m2023 {
+                top: 23%;
+                left: 35%;
+            }
+
+            .milestone.m2024 {
+                top: 15%;
+                left: 67%;
+            }
+
+            .milestone.m2025 {
+                top: 6%;
+                left: 55%;
+            }
+
+            .milestone.m2016 {
+                top: 90%;
+                left: 25%;
+            }
+
+            .route {
+                object-fit: fill;
+            }
+        }
+
+        /* Small Phones (max-width: 480px) */
+        @media (max-width: 480px) {
+            .milestone .circle {
+                width: 35px;
+                height: 35px;
+                font-size: 10px;
+            }
+
+            .milestone .line {
+                height: 25px;
+            }
+
+            .milestone .text {
+                font-size: 11px;
+                max-width: 120px;
+            }
+
+            .milestone.m2016 {
+                top: 90%;
+                left: 22%;
+            }
+
+            .milestone.m2017 {
+                top: 78%;
+                left: 27%;
+            }
+
+            .milestone.m2018 {
+                top: 68%;
+                left: 27%;
+            }
+
+            .milestone.m2019 {
+                top: 24%;
+                left: 5%;
+            }
+
+            .milestone.m2020 {
+                top: 57%;
+                left: 34%;
+            }
+
+            .milestone.m2021 {
+                top: 48%;
+                left: 46%;
+            }
+
+            .milestone.m2022 {
+                top: 41%;
+                left: 0%;
+            }
+
+            .milestone.m2023 {
+                top: 33%;
+                left: 18%;
+            }
+
+            .milestone.m2024 {
+                top: 15%;
+                left: 1%;
+            }
+
+            .milestone.m2025 {
+                top: 6%;
+                left: 25%;
+            }
+
+            .route {
+                object-fit: fill;
+            }
+        }
+
+        /* ----------- RESPONSIVE ADJUSTMENTS ----------- */
+
+        @media (max-width: 1024px) {
+            .circle {
+                width: 50px;
+                height: 50px;
+                font-size: 0.9rem;
+            }
+
+            .text {
+                max-width: 190px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <img src="route.jpeg" alt="Route" class="route">
+
+        <div class="milestone m2016">
+            <div class="circle">2016</div>
+            <div class="line"></div>
+            <div class="text">Project launch and initial planning completed.</div>
+        </div>
+
+        <div class="milestone m2017">
+            <div class="circle">2017</div>
+            <div class="line"></div>
+            <div class="text">Site development and construction phase initiated.</div>
+        </div>
+
+        <div class="milestone m2018">
+            <div class="circle">2018</div>
+            <div class="line"></div>
+            <div class="text">Landscaping and greenery improvements underway.</div>
+        </div>
+
+        <div class="milestone m2019">
+            <div class="circle">2019</div>
+            <div class="line"></div>
+            <div class="text">Community engagement and partnerships established.</div>
+        </div>
+
+        <div class="milestone m2020">
+            <div class="circle">2020</div>
+            <div class="line"></div>
+            <div class="text">Innovative solutions integrated into the project.</div>
+        </div>
+
+        <div class="milestone m2021">
+            <div class="circle">2021</div>
+            <div class="line"></div>
+            <div class="text">Main infrastructure construction nearing completion.</div>
+        </div>
+
+        <div class="milestone m2022">
+            <div class="circle">2022</div>
+            <div class="line"></div>
+            <div class="text">Technical testing and quality assurance ongoing.</div>
+        </div>
+
+        <div class="milestone m2023">
+            <div class="circle">2023</div>
+            <div class="line"></div>
+            <div class="text">Property handover preparation phase started.</div>
+        </div>
+
+        <div class="milestone m2024">
+            <div class="circle">2024</div>
+            <div class="line"></div>
+            <div class="text">Final client coordination and review meetings.</div>
+        </div>
+
+        <div class="milestone m2025">
+            <div class="circle">2025</div>
+            <div class="line"></div>
+            <div class="text">Project completion and grand opening ceremony!</div>
+        </div>
+    </div>
+</body>
+
+</html>

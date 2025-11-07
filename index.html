@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JPKR</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    body {
+      scrollbar-width: none;
+    }
+
+    @font-face {
+      font-family: 'Noricon';
+      src: url('../fonts/Norican.otf') format('opentype'),
+        url('../fonts/Norican-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .logo {
+      font-family: "fangsong";
+      font-size: 2.5rem;
+      color: #000;
+      font-weight: normal;
+    }
+
+    /* Carousel styling */
+    .carousel-inner {
+      position: relative;
+    }
+
+    .carousel-inner::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .carousel-item {
+      height: 100vh;
+      background: radial-gradient(circle, #939393 10%, #595959 40%, black 100%);
+    }
+
+    .carousel-item .row {
+      height: 100%;
+      align-items: center;
+    }
+
+    .carousel-text {
+      position: relative;
+      z-index: 2;
+    }
+
+
+    .carousel-item h2,
+    .carousel-item p {
+      color: #ffffff;
+    }
+
+    .carousel-item h2 {
+      font-size: 3rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 60px;
+      height: 60px;
+      background-color: #d0d0d099;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .carousel-control-prev i,
+    .carousel-control-next i {
+      color: #fff;
+      font-size: 1.5rem;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <!-- Header 1 -->
+  <div class="header-top">
+    <div class="menu-logo">
+      <!-- <div class="menu-icon" id="menuToggle">&#9776;</div> -->
+      <div class="logo">
+        <img src="img/" width="7%" alt="">JPKR
+      </div>
+    </div>
+  </div>
+
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="false">
+    <div class="carousel-inner">
+      <!-- Slide 1 -->
+      <a href="aceivements.html">
+        <div class="carousel-item active">
+          <div class="container h-100">
+            <div class="row h-100">
+              <div class="col-md-6 d-flex flex-column justify-content-center carousel-text">
+                <h2>Lorem Ipsum</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa error maiores, veniam odio
+                  amet nostrum ullam quo.</p>
+              </div>
+              <div class="col-md-6 text-center carousel-img">
+                <img src="/JPKR.png" class="img-fluid" alt="Slide 1">
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <!-- Slide 2 -->
+      <a href="aceivements.html">
+        <div class="carousel-item">
+          <div class="container h-100">
+            <div class="row h-100">
+              <div class="col-md-6 d-flex flex-column justify-content-center carousel-text">
+                <h2>Lorem Ipsum</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa error maiores, veniam odio
+                  amet nostrum ullam quo.</p>
+              </div>
+              <div class="col-md-6 text-center carousel-img">
+                <img src="JPKR1_updated1.png" class="img-fluid secondimg" alt="Slide 2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <!-- Slide 3 -->
+      <a href="aceivements.html">
+        <div class="carousel-item">
+          <div class="container h-100">
+            <div class="row h-100">
+              <div class="col-md-6 d-flex flex-column justify-content-center carousel-text">
+                <h2>Lorem Ipsum</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa error maiores, veniam odio
+                  amet nostrum ullam quo.</p>
+              </div>
+              <div class="col-md-6 text-center carousel-img">
+                <img src="JPKR3.png" class="img-fluid" alt="Slide 3">
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <i class="fa-solid fa-chevron-left fa-2xl"></i>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <i class="fa-solid fa-chevron-right fa-2xl"></i>
+    </button>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

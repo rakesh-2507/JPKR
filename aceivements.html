@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPKR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --bauhaus-red: #e63946;
+            --bauhaus-beige: #f8f5ef;
+            --bauhaus-black: #111;
+        }
+
+        body {
+            background-color: var(--bauhaus-beige);
+            font-family: "Poppins", sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            color: var(--bauhaus-black);
+        }
+
+        /* Timeline Container */
+        .timeline-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: scroll;
+            scrollbar-width: none;
+        }
+
+        .circle-outer {
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border: 6px solid #ff0000;
+            border-radius: 50%;
+            opacity: 0.5;
+            --dashed-pattern: repeating-conic-gradient(black 0deg 11.8deg,
+                    transparent 11.8deg 12deg);
+
+            mask: conic-gradient(white 0deg 278deg, transparent 278deg 360deg),
+                var(--dashed-pattern);
+            mask-composite: intersect;
+            -webkit-mask: conic-gradient(white 0deg 278deg, transparent 278deg 360deg),
+                var(--dashed-pattern);
+            -webkit-mask-composite: destination-in;
+            transform: rotate(40deg);
+        }
+
+        .circle-inner {
+            position: absolute;
+            width: 410px;
+            height: 410px;
+            border: 10px solid var(--bauhaus-red);
+            border-radius: 50%;
+            opacity: 0.6;
+
+            --dashed-pattern: repeating-conic-gradient(black 0deg 11.8deg,
+                    transparent 11.8deg 12deg);
+
+            mask: conic-gradient(white 0deg 278deg, transparent 278deg 360deg),
+                var(--dashed-pattern);
+            mask-composite: intersect;
+            -webkit-mask: conic-gradient(white 0deg 278deg, transparent 278deg 360deg),
+                var(--dashed-pattern);
+            -webkit-mask-composite: source-out;
+
+            transform: rotate(35deg);
+        }
+
+        .circle-inner1 {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 3px solid #1077ff;
+            border-radius: 50%;
+            opacity: 0.7;
+            mask: conic-gradient(black 0deg 250deg, transparent 250deg 360deg);
+            -webkit-mask: conic-gradient(black 0deg 250deg, transparent 250deg 360deg);
+            transform: rotate(95deg);
+            animation: rotateTimeline 5s linear infinite;
+        }
+
+        .circle-inner2 {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border: 3px solid #1077ff;
+            border-radius: 50%;
+            opacity: 0.5;
+            mask: conic-gradient(black 0deg 250deg, transparent 250deg 360deg);
+            -webkit-mask: conic-gradient(black 0deg 250deg, transparent 250deg 360deg);
+            transform: rotate(160deg);
+            animation: rotateTimelineReverse 5s linear infinite;
+        }
+
+        /* Rotations */
+        @keyframes rotateTimeline {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotateTimelineReverse {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* Center Portrait */
+        .center-portrait {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--bauhaus-black);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+            background: white;
+            z-index: 10;
+        }
+
+        .center-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        /* .achievement::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 146px;
+            height: 75px;
+            transform: translateY(0%) rotate(260deg);
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='20'><path d='M0 10 Q10 0,20 10 T120 10' fill='none' stroke='%23e63946' stroke-width='2' stroke-dasharray='4,4'/></svg>") no-repeat center;
+            background-size: 75% auto;
+            pointer-events: none;
+        } */
+
+        .achievement-card {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 150px;
+            transform: translateY(50%) translateX(0%) rotate(120deg);
+            border-radius: 15px;
+            background: #fff;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 5;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .achievement-card img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+        }
+
+        .achievement-card h5 {
+            font-size: 14px;
+            margin: 5px 0 0;
+        }
+
+        .achievement-card p {
+            font-size: 11px;
+            margin: 0;
+            color: #555;
+        }
+
+        .achievement-card:hover {
+            cursor: pointer;
+        }
+
+        .route a {
+            color: #111;
+            text-decoration: none;
+        }
+
+        /* Large Desktops (1440px and above) */
+        @media (min-width: 1440px) {
+            .circle-outer {
+                width: 500px;
+                height: 500px;
+            }
+
+            .circle-inner {
+                width: 480px;
+                height: 480px;
+            }
+
+            .circle-inner1 {
+                width: 320px;
+                height: 320px;
+            }
+
+            .circle-inner2 {
+                width: 290px;
+                height: 290px;
+            }
+
+            .center-portrait {
+                width: 220px;
+                height: 220px;
+            }
+        }
+
+        /* Tablets (max-width: 992px) */
+        @media (max-width: 992px) {
+            .timeline-container {
+                height: 80vh;
+            }
+
+            .circle-outer {
+                width: 360px;
+                height: 360px;
+            }
+
+            .circle-inner {
+                width: 340px;
+                height: 340px;
+            }
+
+            .circle-inner1 {
+                width: 240px;
+                height: 240px;
+            }
+
+            .circle-inner2 {
+                width: 210px;
+                height: 210px;
+            }
+
+            .center-portrait {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        /* Mobile (max-width: 768px) */
+        @media (max-width: 768px) {
+            .timeline-container {
+                height: 500px;
+            }
+
+            .circle-outer {
+                width: 280px;
+                height: 280px;
+            }
+
+            .circle-inner {
+                width: 260px;
+                height: 260px;
+            }
+
+            .circle-inner1 {
+                width: 180px;
+                height: 180px;
+            }
+
+            .circle-inner2 {
+                width: 150px;
+                height: 150px;
+            }
+
+            .center-portrait {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* Small Phones (max-width: 480px) */
+        @media (max-width: 480px) {
+            .timeline-container {
+                height: 400px;
+            }
+
+            .circle-outer {
+                width: 220px;
+                height: 220px;
+            }
+
+            .circle-inner {
+                width: 200px;
+                height: 200px;
+            }
+
+            .circle-inner1 {
+                width: 140px;
+                height: 140px;
+            }
+
+            .circle-inner2 {
+                width: 120px;
+                height: 120px;
+            }
+
+            .center-portrait {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Very Small Devices (max-width: 360px) */
+        @media (max-width: 360px) {
+            .timeline-container {
+                height: 360px;
+            }
+
+            .circle-outer {
+                width: 180px;
+                height: 180px;
+            }
+
+            .circle-inner {
+                width: 160px;
+                height: 160px;
+            }
+
+            .circle-inner1 {
+                width: 120px;
+                height: 120px;
+            }
+
+            .circle-inner2 {
+                width: 100px;
+                height: 100px;
+            }
+
+            .center-portrait {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header-top">
+        <div class="menu-logo">
+            <!-- <div class="menu-icon" id="menuToggle">&#9776;</div> -->
+            <div class="logo">
+                <img src="img/" width="7%" alt="">JPKR
+            </div>
+        </div>
+        <div class="route">
+            <a href="/routemap.html">Route Map</a>
+        </div>
+        <div>
+            <a href="/circle.html" style="color: #111; text-decoration: none;"> Arc</a>
+        </div>
+
+    </div>
+
+    <div class="timeline-container">
+        <div class="circle-outer"></div>
+        <div class="circle-inner"></div>
+        <div class="circle-inner1"></div>
+        <div class="circle-inner2"></div>
+
+        <!-- Center Portrait -->
+        <div class="center-portrait">
+            <img src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?auto=format&fit=crop&w=400&q=80"
+                alt="Walter Gropius">
+        </div>
+
+        <div class="achievements">
+
+            <div class="achievement" style="transform: rotate(350deg) translateX(200px) rotate(250deg);">
+                1945
+                <div class="achievement-card" id="card1"></div>
+            </div>
+
+            <div class="achievement" style="transform: rotate(17deg) translateX(239px) rotate(255deg);">
+                1950
+                <div class="achievement-card" id="card2"
+                    style="transform: translateY(50%) translateX(15%) rotate(89deg);"></div>
+            </div>
+
+            <div class="achievement" style="transform: rotate(40deg) translateX(253px) rotate(262deg);">
+                1955
+                <div class="achievement-card" id="card3"
+                    style="transform: translateY(50%) translateX(30%) rotate(60deg);"></div>
+            </div>
+
+            <div class="achievement" style="transform: rotate(60deg) translateX(245px) rotate(271deg);">
+                1960
+                <div class="achievement-card" id="card4"
+                    style="transform: translateY(60%) translateX(0%) rotate(28deg);"></div>
+            </div>
+
+            <div class="achievement" style="transform: rotate(92deg) translateX(218px) rotate(273deg);">
+                1965
+                <div class="achievement-card" id="card5"
+                    style="transform: translateY(11%) translateX(19%) rotate(-5deg);"></div>
+            </div>
+
+            <div class="achievement" style="transform: rotate(135deg) translateX(206px) rotate(269deg);">
+                1970
+                <div class="achievement-card" id="card6"
+                    style="transform: translateY(21%) translateX(34%) rotate(-43deg);"></div>
+            </div>
+
+            <div class="achievement" style="transform: rotate(181deg) translateX(223px) rotate(-102deg);">
+                1975
+                <div class="achievement-card" id="card7"
+                    style="transform: translateY(27%) translateX(80%) rotate(282deg);"></div>
+            </div>
+
+            <div class="achievement" style="transform: rotate(218deg) translateX(269px) rotate(-105deg);">
+                1980
+                <div class="achievement-card" id="card8"
+                    style="transform: translateY(30%) translateX(82%) rotate(246deg);"></div>
+            </div>
+
+            <div class="achievement" style="transform: rotate(243deg) translateX(300px) rotate(-105deg);">
+
+                <div class="achievement-card" id="card9"
+                    style="transform: translateY(48%) translateX(45%) rotate(220deg);"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const data = [
+            { id: "card1", img: "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?auto=format&fit=crop&w=400&q=80", title: "HOME", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", link: "/HOME.html" },
+            { id: "card2", img: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=400&q=80", title: "Judicial Career", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", link: "#" },
+            { id: "card3", img: "https://images.unsplash.com/photo-1533050487297-09b450131914?auto=format&fit=crop&w=400&q=80", title: "Post-Retirement Engagements", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", link: "#" },
+            { id: "card4", img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=400&q=80", title: "Literary Pursuits ", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", link: "#" },
+            { id: "card5", img: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=400&q=80", title: "Social Service", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", link: "#" },
+            { id: "card6", img: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80", title: "Spiritual Service & Facilitation", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", link: "#" },
+            { id: "card7", img: "https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=400&q=80", title: "Honours & Recognition", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", link: "#" },
+            { id: "card8", img: "https://images.unsplash.com/photo-1498579809087-ef1e558fd1da?auto=format&fit=crop&w=400&q=80", title: "Gallery", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", link: "/gallery.html" },
+            { id: "card9", img: "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=400&q=80", title: "Contact", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", link: "#" }
+        ];
+
+        data.forEach(item => {
+            const card = document.getElementById(item.id);
+            card.innerHTML = `
+    <a href="${item.link}" style="text-decoration:none; color:inherit; display:block; height:100%;">
+      <img src="${item.img}" alt="${item.title}">
+      <div>
+        <h5>${item.title}</h5>
+        <p>${item.desc}</p>
+      </div>
+    </a>
+  `;
+        });
+
+    </script>
+
+</body>
+
+</html>

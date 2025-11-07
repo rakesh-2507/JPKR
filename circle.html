@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPKR</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #d4d4ce;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .firstdiv {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .imgone {
+            position: absolute;
+            bottom: 0;
+            width: 31%;
+        }
+
+        /* Arc container */
+        .icon-arc {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            border-top-left-radius: 400px;
+            border-top-right-radius: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 150px;
+        }
+
+        .icon-item {
+            position: absolute;
+            text-align: center;
+        }
+
+        .icon-item i {
+            font-size: 30px;
+            color: #444;
+            transition: all 0.3s ease;
+            background: #fff;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .icon-item i:hover {
+            color: #ff5722;
+            transform: scale(1.2);
+        }
+
+        /* Main connector line */
+        .connector-line {
+            position: absolute;
+            height: 2px;
+            background: #565554;
+            transform-origin: left center;
+            z-index: 1;
+        }
+
+        /* Sub line at edge */
+        .sub-line {
+            position: absolute;
+            height: 2px;
+            background: #565554;
+            transform-origin: left center;
+        }
+
+        /* Paragraph near end of line */
+        .icon-text {
+            position: absolute;
+            font-family: sans-serif;
+            font-size: 14px;
+            color: #333;
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="firstdiv">
+        <img src="demo.png" alt="demo" class="imgone">
+
+        <div class="icon-arc" id="iconArc">
+            <div class="icon-item" data-angle="70"><i class="fa-solid fa-house"></i>
+                <div class="connector-line">
+                    <div class="sub-line"></div>
+                </div>
+                <p class="icon-text">Home</p>
+            </div>
+            <div class="icon-item" data-angle="56"><i class="fa-solid fa-user"></i>
+                <div class="connector-line">
+                    <div class="sub-line"></div>
+                </div>
+                <p class="icon-text">Profile</p>
+            </div>
+            <div class="icon-item" data-angle="43"><i class="fa-solid fa-envelope"></i>
+                <div class="connector-line">
+                    <div class="sub-line"></div>
+                </div>
+                <p class="icon-text">Messages</p>
+            </div>
+            <div class="icon-item" data-angle="30"><i class="fa-solid fa-phone"></i>
+                <div class="connector-line">
+                    <div class="sub-line"></div>
+                </div>
+                <p class="icon-text">Contact</p>
+            </div>
+            <div class="icon-item" data-angle="18"><i class="fa-solid fa-gear"></i>
+                <div class="connector-line">
+                    <div class="sub-line"></div>
+                </div>
+                <p class="icon-text">Settings</p>
+            </div>
+            <div class="icon-item" data-angle="5"><i class="fa-solid fa-car"></i>
+                <div class="connector-line">
+                    <div class="sub-line"></div>
+                </div>
+                <p class="icon-text">Travel</p>
+            </div>
+            <div class="icon-item" data-angle="-8"><i class="fa-solid fa-heart"></i>
+                <div class="connector-line">
+                    <div class="sub-line"></div>
+                </div>
+                <p class="icon-text">Favorites</p>
+            </div>
+            <div class="icon-item" data-angle="-15"><i class="fa-solid fa-star"></i>
+                <div class="connector-line">
+                    <div class="sub-line"></div>
+                </div>
+                <p class="icon-text">Achievements</p>
+            </div>
+            <div class="icon-item" data-angle="-30"><i class="fa-solid fa-bell"></i>
+                <div class="connector-line">
+                    <div class="sub-line"></div>
+                </div>
+                <p class="icon-text">Alerts</p>
+            </div>
+            <div class="icon-item" data-angle="-45"><i class="fa-solid fa-camera"></i>
+                <div class="connector-line">
+                    <div class="sub-line"></div>
+                </div>
+                <p class="icon-text">Gallery</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const items = document.querySelectorAll('.icon-item');
+        const radius = 290;
+        const startAngle = 70;
+        const endAngle = -45;
+        const total = items.length;
+        const step = (startAngle - endAngle) / (total - 1);
+
+        items.forEach((item, index) => {
+            const angle = startAngle - step * index;
+            const x = radius * Math.cos(angle * Math.PI / 180);
+            const y = radius * Math.sin(angle * Math.PI / 180);
+
+            const icon = item.querySelector('i');
+            const line = item.querySelector('.connector-line');
+            const subLine = item.querySelector('.sub-line');
+            const text = item.querySelector('.icon-text');
+
+            const centerX = 200;
+            const centerY = 200;
+
+            // Position icon
+            item.style.left = `${centerX + x + 50}px`;
+            item.style.top = `${centerY - y + 10}px`;
+
+            // Main line setup
+            const lineLength = 100;
+            const lineAngle = -angle;
+            line.style.width = `${lineLength}px`;
+            line.style.left = `${icon.offsetWidth / 2}px`;
+            line.style.top = `${icon.offsetHeight / 2 - 1}px`;
+            line.style.transform = `rotate(${lineAngle}deg)`;
+
+            // Sub-line setup (individual rotation)
+            const subLineLength = 100;
+            const subLineAngle = parseFloat(item.dataset.angle) || 0;
+            subLine.style.width = `${subLineLength}px`;
+            subLine.style.left = `${lineLength}px`;
+            subLine.style.top = `0px`;
+            subLine.style.transform = `rotate(${subLineAngle}deg)`;
+
+            // Text placement (after sub-line)
+            const totalLine = lineLength + subLineLength - 100;
+            const textX = Math.cos(angle * Math.PI / 180) * totalLine;
+            const textY = -Math.sin(angle * Math.PI / 180) * totalLine;
+            text.style.left = `${icon.offsetWidth / 2 + textX}px`;
+            text.style.top = `${icon.offsetHeight / 2 + textY - 50}px`;
+        });
+    </script>
+</body>
+
+</html>
