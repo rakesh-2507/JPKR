@@ -390,3 +390,10 @@ p {
     display: none !important;
   }
 }
+
+.download-wrap {
+  width: 70%;
+  height: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
