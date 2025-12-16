@@ -29,63 +29,41 @@
       font-weight: normal;
     }
 
-    /* Carousel styling */
     .carousel-inner {
       position: relative;
-    }
-
-    .carousel-inner::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-
-    .carousel-item {
-      height: 100vh;
-      background: radial-gradient(circle, #939393 10%, #595959 40%, black 100%);
-    }
-
-    .carousel-item .row {
-      height: 100%;
-      align-items: center;
-    }
-
-    .carousel-text {
-      position: relative;
-      z-index: 2;
-    }
-
-
-    .carousel-item h2,
-    .carousel-item p {
-      color: #ffffff;
-    }
-
-    .carousel-item h2 {
-      font-size: 3rem;
     }
 
     .carousel-control-prev,
     .carousel-control-next {
       width: 60px;
-      height: 60px;
-      background-color: #d0d0d099;
-      border-radius: 50%;
-      top: 50%;
-      transform: translateY(-50%);
     }
 
     .carousel-control-prev i,
     .carousel-control-next i {
+      background: rgba(0, 0, 0, 0.6);
       color: #fff;
-      font-size: 1.5rem;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
+    .carousel-control-prev i:hover,
+    .carousel-control-next i:hover {
+      background: rgba(0, 0, 0, 0.85);
+    }
+
+    .slider_img {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .slider {
+      width: 100vw;
+      height: 100vh;
+    }
   </style>
 
 </head>
@@ -106,51 +84,32 @@
       <!-- Slide 1 -->
       <a href="aceivements.html">
         <div class="carousel-item active">
-          <div class="container h-100">
-            <div class="row h-100">
-              <div class="col-md-6 d-flex flex-column justify-content-center carousel-text">
-                <h2>Lorem Ipsum</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa error maiores, veniam odio
-                  amet nostrum ullam quo.</p>
-              </div>
-              <div class="col-md-6 text-center carousel-img">
-                <img src="/JPKR.png" class="img-fluid" alt="Slide 1">
-              </div>
-            </div>
+          <div class="slider_img">
+            <img src="images/slider1.jpeg" class="slider" alt="JPKR">
           </div>
         </div>
       </a>
       <!-- Slide 2 -->
       <a href="aceivements.html">
         <div class="carousel-item">
-          <div class="container h-100">
-            <div class="row h-100">
-              <div class="col-md-6 d-flex flex-column justify-content-center carousel-text">
-                <h2>Lorem Ipsum</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa error maiores, veniam odio
-                  amet nostrum ullam quo.</p>
-              </div>
-              <div class="col-md-6 text-center carousel-img">
-                <img src="JPKR1_updated1.png" class="img-fluid secondimg" alt="Slide 2">
-              </div>
-            </div>
+          <div class="slider_img">
+            <img src="images/slider2.jpeg" class="slider" alt="JPKR">
           </div>
         </div>
       </a>
       <!-- Slide 3 -->
       <a href="aceivements.html">
         <div class="carousel-item">
-          <div class="container h-100">
-            <div class="row h-100">
-              <div class="col-md-6 d-flex flex-column justify-content-center carousel-text">
-                <h2>Lorem Ipsum</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa error maiores, veniam odio
-                  amet nostrum ullam quo.</p>
-              </div>
-              <div class="col-md-6 text-center carousel-img">
-                <img src="JPKR3.png" class="img-fluid" alt="Slide 3">
-              </div>
-            </div>
+          <div class="slider_img">
+            <img src="images/slider3.jpeg" class="slider" alt="JPKR">
+          </div>
+        </div>
+      </a>
+      <!-- Slide 4 -->
+      <a href="aceivements.html">
+        <div class="carousel-item">
+          <div class="slider_img">
+            <img src="images/slider4.jpeg" class="slider" alt="JPKR">
           </div>
         </div>
       </a>
