@@ -35,7 +35,40 @@
 
     .carousel-control-prev,
     .carousel-control-next {
+      top: 50%;
+      transform: translateY(-50%);
       width: 60px;
+    }
+
+    @media (max-width: 768px) {
+
+      #heroCarousel {
+        position: relative;
+        padding-bottom: 70px;
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        top: auto;
+        bottom: 10px;
+        transform: none;
+        width: auto;
+      }
+
+      .carousel-control-prev {
+        left: 35%;
+      }
+
+      .carousel-control-next {
+        right: 40%;
+      }
+
+      .carousel-control-prev i,
+      .carousel-control-next i {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.2rem;
+      }
     }
 
     .carousel-control-prev i,
@@ -55,14 +88,13 @@
       background: rgba(0, 0, 0, 0.85);
     }
 
+
     .slider_img {
       width: 100vw;
-      height: 100vh;
     }
 
     .slider {
       width: 100vw;
-      height: 100vh;
     }
   </style>
 
