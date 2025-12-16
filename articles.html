@@ -2860,7 +2860,9 @@
                         <p>Andhra Pradesh</p>
                         <p>On 31-8-2010 at Telugu University, Hyderabad</p>
                     </div>
+
                     <div>
+
                         <p>My pranamams to Sri Sadguru Sivananda Murthy garu and the President
                             Sri M.V.R.Sastry and other elders and esteemed friends seated on the dais and also seated
                             facing
@@ -6414,17 +6416,13 @@
                 const sectionId = this.dataset.section;
                 const section = document.getElementById(sectionId);
 
-                // FIND scrollable container INSIDE the section
                 const scrollBox = section.querySelector(".section-content-70");
 
-                // If not found, fallback to entire section
                 const targetElement = scrollBox || section;
 
-                // Save original styles
                 const originalHeight = targetElement.style.height;
                 const originalOverflow = targetElement.style.overflow;
 
-                // Expand fully
                 targetElement.style.height = "auto";
                 targetElement.style.overflow = "visible";
 
@@ -6446,7 +6444,7 @@
                     .set(opt)
                     .save()
                     .then(() => {
-                        // Restore scroll state
+
                         targetElement.style.height = originalHeight;
                         targetElement.style.overflow = originalOverflow;
                     });
