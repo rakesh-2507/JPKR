@@ -49,6 +49,7 @@
         bottom: 10px;
         transform: none;
         width: auto;
+        position: fixed;
       }
 
       .carousel-control-prev {
@@ -127,7 +128,13 @@
       <a href="aceivements.html">
         <div class="carousel-item">
           <div class="slider_img">
-            <img src="images/slider2.jpeg" class="slider" alt="JPKR">
+            <picture>
+              <!-- Mobile image -->
+              <source media="(max-width: 768px)" srcset="images/slider2mob.jpeg">
+
+              <!-- Desktop image -->
+              <img src="images/slider2.jpeg" class="slider" alt="JPKR">
+            </picture>
           </div>
         </div>
       </a>
@@ -135,7 +142,13 @@
       <a href="aceivements.html">
         <div class="carousel-item">
           <div class="slider_img">
-            <img src="images/slider3.jpeg" class="slider" alt="JPKR">
+            <picture>
+              <!-- Mobile image -->
+              <source media="(max-width: 768px)" srcset="images/slider3mob.jpeg">
+
+              <!-- Desktop image -->
+              <img src="images/slider3.jpeg" class="slider" alt="JPKR">
+            </picture>
           </div>
         </div>
       </a>
@@ -143,7 +156,13 @@
       <a href="aceivements.html">
         <div class="carousel-item">
           <div class="slider_img">
-            <img src="images/slider4.jpeg" class="slider" alt="JPKR">
+            <picture>
+              <!-- Mobile image -->
+              <source media="(max-width: 768px)" srcset="images/slider4mob.jpeg">
+
+              <!-- Desktop image -->
+              <img src="images/slider4.jpeg" class="slider" alt="JPKR">
+            </picture>
           </div>
         </div>
       </a>
