@@ -86,19 +86,117 @@
     }
 
 
-    .slider_img {
+    .slider_img,
+    .slider {
       width: 100vw;
     }
 
-    .slider {
-      width: 100vw;
+    .slider_img {
+      position: relative;
+    }
+
+    .overlay-box {
+      position: absolute;
+      top: 40%;
+      left: 15%;
+      background: rgb(135 131 131 / 60%);
+      color: #fff;
+      padding: 10px 10px;
+      border-radius: 10px;
+      min-width: 200px;
+      max-width: 300px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .overlay-box h4 {
+      margin: 0;
+      font-size: 1.5rem;
+      border-top: 4px solid #fff5e6;
+      padding-top: 5px;
+    }
+
+    .overlay-box p {
+      margin: 5px 0 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .overlay-box {
+        bottom: 15px;
+        left: 15px;
+        max-width: 80%;
+        padding: 10px;
+      }
+
+      .overlay-box h4 {
+        font-size: 1.2rem;
+      }
+
+      .overlay-box p {
+        font-size: 0.8rem;
+      }
+    }
+
+    .overlay-box:hover {
+      background: #847d72;
+      transform: scale3d(1.5, 1.5, 1.5);
+
+      .arrow-right i {
+        animation: heartbeatRight 3s infinite;
+        border: 2px solid #fff5e6;
+        border-radius: 100%;
+        font-size: 1rem;
+        padding: 1rem;
+      }
+    }
+
+    .arrow-right {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .arrow-right i {
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+
+    @keyframes heartbeatRight {
+      0% {
+        transform: scale(1) translateX(0);
+        opacity: 1;
+      }
+
+      25% {
+        transform: scale(1.2) translateX(5px);
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: scale(1) translateX(0);
+        opacity: 1;
+      }
+
+      75% {
+        transform: scale(1.2) translateX(5px);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1) translateX(0);
+        opacity: 1;
+      }
     }
   </style>
 
 </head>
 
 <body>
-  <!-- Header 1 -->
+
   <div class="header-top">
     <div class="menu-logo">
       <!-- <div class="menu-icon" id="menuToggle">&#9776;</div> -->
@@ -110,64 +208,96 @@
 
   <div id="heroCarousel" class="carousel slide" data-bs-ride="false">
     <div class="carousel-inner">
-      <!-- Slide 1 -->
-      <a href="aceivements.html">
+      <a>
         <div class="carousel-item active">
           <div class="slider_img">
             <picture>
-              <!-- Mobile image -->
               <source media="(max-width: 768px)" srcset="images/slider1mob.jpeg">
-
-              <!-- Desktop image -->
               <img src="images/slider1.jpeg" class="slider" alt="JPKR">
             </picture>
+
+            <div class="overlay-box">
+              <h4>Writing my own success story</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
+                sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
+              </p>
+              <a href="/home.html">
+                <div class="arrow-right">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </a>
-      <!-- Slide 2 -->
-      <a href="aceivements.html">
+      <a>
         <div class="carousel-item">
           <div class="slider_img">
             <picture>
-              <!-- Mobile image -->
               <source media="(max-width: 768px)" srcset="images/slider2mob.jpeg">
-
-              <!-- Desktop image -->
               <img src="images/slider2.jpeg" class="slider" alt="JPKR">
             </picture>
+
+            <div class="overlay-box">
+              <h4>Writing my own success story</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
+                sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
+              </p>
+              <a href="/home.html">
+                <div class="arrow-right">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </a>
-      <!-- Slide 3 -->
-      <a href="aceivements.html">
+      <a>
         <div class="carousel-item">
           <div class="slider_img">
             <picture>
-              <!-- Mobile image -->
               <source media="(max-width: 768px)" srcset="images/slider3mob.jpeg">
-
-              <!-- Desktop image -->
               <img src="images/slider3.jpeg" class="slider" alt="JPKR">
             </picture>
+
+            <div class="overlay-box">
+              <h4>Writing my own success story</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
+                sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
+              </p>
+              <a href="/home.html">
+                <div class="arrow-right">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </a>
-      <!-- Slide 4 -->
-      <a href="aceivements.html">
+      <a>
         <div class="carousel-item">
           <div class="slider_img">
             <picture>
-              <!-- Mobile image -->
               <source media="(max-width: 768px)" srcset="images/slider4mob.jpeg">
-
-              <!-- Desktop image -->
               <img src="images/slider4.jpeg" class="slider" alt="JPKR">
             </picture>
+
+            <div class="overlay-box">
+              <h4>Writing my own success story</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
+                sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
+              </p>
+              <a href="/home.html">
+                <div class="arrow-right">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </a>
     </div>
-    <!-- Controls -->
+
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
       <i class="fa-solid fa-chevron-left fa-2xl"></i>
     </button>
@@ -175,6 +305,7 @@
       <i class="fa-solid fa-chevron-right fa-2xl"></i>
     </button>
   </div>
+
   <script src="script.js"></script>
 </body>
 
