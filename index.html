@@ -10,9 +10,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lavishly+Yours&family=Mr+De+Haviland&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lavishly+Yours&family=Mr+De+Haviland&display=swap"
+    rel="stylesheet">
+
   <style>
     body {
       scrollbar-width: none;
@@ -103,28 +105,27 @@
       position: absolute;
       top: 40%;
       left: 15%;
-      background: rgb(135 131 131 / 60%);
+      background: rgb(255 255 255 / 60%);
       color: #fff;
       padding: 10px 10px;
       border-radius: 10px;
       min-width: 200px;
-      max-width: 300px;
+      max-width: 400px;
 
       a {
         text-decoration: none;
       }
     }
 
-    .overlay-box h4 {
-      margin: 0;
-      font-size: 1.5rem;
-      border-top: 4px solid #fff5e6;
-      padding-top: 5px;
-    }
 
     .overlay-box p {
       margin: 5px 0 0;
-      font-size: 0.9rem;
+      font-size: 2rem;
+      color: #80422c;
+      border-top: 2px solid #80422c;
+      padding-top: 5px;
+      font-family: "Mr De Haviland", cursive;
+      padding: 1rem;
     }
 
     @media (max-width: 768px) {
@@ -172,7 +173,7 @@
 
     .arrow-right i {
       font-size: 1.5rem;
-      color: #fff;
+      color: #000000;
     }
 
 
@@ -202,6 +203,74 @@
         opacity: 1;
       }
     }
+
+    .circle-wrapper {
+      position: absolute;
+      top: 0%;
+      left: 30%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 200px;
+    }
+
+    .rotating-text {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin 30s linear infinite;
+      z-index: 2;
+    }
+
+    .rotating-text span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: 0 5px;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    @keyframes spin {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .circle-image {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid white;
+      z-index: 1;
+    }
+
+    .circle-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes rotateText {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 
 </head>
@@ -213,7 +282,7 @@
       <!-- <div class="menu-icon" id="menuToggle">&#9776;</div> -->
       <div class="logo">
         <a href="/index.html" style="text-decoration: none;color: inherit;">
-         Jpkr..</a>
+          Jpkr..</a>
       </div>
     </div>
   </div>
@@ -227,13 +296,20 @@
               <source media="(max-width: 768px)" srcset="images/slider1mob.jpeg">
               <img src="images/slider1.jpeg" class="slider" alt="JPKR">
             </picture>
+            <div class="circle-wrapper">
+              <div class="rotating-text">
+                <div class="rotating-text" id="circleText"></div>
+              </div>
 
+              <div class="circle-image">
+                <img src="images/lawyer.jpg" alt="circle">
+              </div>
+            </div>
             <div class="overlay-box">
-              <h4>Writing my own success story</h4>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
                 sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
               </p>
-              <a href="/home.html">
+              <a href="/intro.html">
                 <div class="arrow-right">
                   <i class="fa-solid fa-arrow-right"></i>
                 </div>
@@ -251,11 +327,10 @@
             </picture>
 
             <div class="overlay-box">
-              <h4>Writing my own success story</h4>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
                 sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
               </p>
-              <a href="/home.html">
+              <a href="/intro.html">
                 <div class="arrow-right">
                   <i class="fa-solid fa-arrow-right"></i>
                 </div>
@@ -273,11 +348,10 @@
             </picture>
 
             <div class="overlay-box">
-              <h4>Writing my own success story</h4>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
                 sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
               </p>
-              <a href="/home.html">
+              <a href="/intro.html">
                 <div class="arrow-right">
                   <i class="fa-solid fa-arrow-right"></i>
                 </div>
@@ -295,11 +369,10 @@
             </picture>
 
             <div class="overlay-box">
-              <h4>Writing my own success story</h4>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
                 sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
               </p>
-              <a href="/home.html">
+              <a href="/intro.html">
                 <div class="arrow-right">
                   <i class="fa-solid fa-arrow-right"></i>
                 </div>
@@ -317,7 +390,25 @@
       <i class="fa-solid fa-chevron-right fa-2xl"></i>
     </button>
   </div>
+  <script>
+    const textContainer = document.getElementById("circleText");
+    const content = "EXPLORE • DISCOVER • CREATE • INSPIRE • ";
 
+    const radius = 80;
+    const angleStep = 360 / content.length;
+
+    content.split("").forEach((char, i) => {
+      const span = document.createElement("span");
+      span.innerText = char;
+
+      span.style.transform = `
+    rotate(${i * angleStep}deg)
+    translate(${radius}px)
+    rotate(90deg)
+  `;
+
+      textContainer.appendChild(span);
+    });  </script>
   <script src="script.js"></script>
 </body>
 

@@ -71,9 +71,9 @@
 .header-dropdown-container {
   display: none;
   position: fixed;
-  top: 115px;
+  top: 95px;
   left: 15rem;
-  width: 50%;
+  width: 65%;
   background: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 1rem;
@@ -303,30 +303,6 @@ p {
   height: fit-content;
 }
 
-.paper-section {
-  padding: 3rem 5rem 0rem 5rem;
-  margin: 30px;
-  background: #fff;
-  border-radius: 6px;
-  border: 1px solid #f8f1f1;
-  background: linear-gradient(#f9f9f96b, #fafafa);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.08);
-  outline: 2px dashed rgba(0, 0, 0, 0.05);
-  outline-offset: -8px;
-  position: relative;
-  overflow-y: scroll;
-  height: 75vh;
-  scrollbar-width: none;
-}
-
-.paper-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 6px;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-}
 
 .hidden-section {
   display: none;
