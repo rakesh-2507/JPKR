@@ -5,16 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JPKR</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="/style.css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lavishly+Yours&family=Mr+De+Haviland&display=swap"
     rel="stylesheet">
@@ -24,7 +20,7 @@
       scrollbar-width: none;
     }
     a{
-      text-decoration: none;
+        text-decoration: none;
     }
 
     @font-face {
@@ -54,6 +50,7 @@
     }
 
     @media (max-width: 768px) {
+
 
       .carousel-control-prev,
       .carousel-control-next {
@@ -97,65 +94,15 @@
       background: rgba(0, 0, 0, 0.85);
     }
 
-    /* =========================
-       FULL SCREEN SLIDER FIX
-    ========================= */
 
-    .carousel-item {
-      height: 100vh;
+    .slider_img,
+    .slider {
+      width: 100vw;
     }
 
     .slider_img {
       position: relative;
-      width: 100vw;
-      height: 100vh;
     }
-
-    .slider {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    /* SLIDES */
-    .slide1 {
-      background-image: url('images/slider1.jpeg');
-    }
-
-    .slide2 {
-      background-image: url('images/slider2.jpeg');
-    }
-
-    .slide3 {
-      background-image: url('images/slider3.jpeg');
-    }
-
-    .slide4 {
-      background-image: url('images/slider4.jpeg');
-    }
-
-    /* MOBILE IMAGES */
-    @media (max-width: 768px) {
-      .slide1 {
-        background-image: url('images/slider1mob.jpeg');
-      }
-
-      .slide2 {
-        background-image: url('images/slider2mob.jpeg');
-      }
-
-      .slide3 {
-        background-image: url('images/slider3mob.jpeg');
-      }
-
-      .slide4 {
-        background-image: url('images/slider4mob.jpeg');
-      }
-    }
-
-    /* ================= overlay unchanged ================= */
 
     .overlay-box {
       position: absolute;
@@ -163,11 +110,16 @@
       left: 15%;
       background: rgb(255 255 255 / 60%);
       color: #fff;
-      padding: 10px;
+      padding: 10px 10px;
       border-radius: 10px;
       min-width: 200px;
       max-width: 400px;
+
+      a {
+        text-decoration: none;
+      }
     }
+
 
     .overlay-box p {
       margin: 5px 0 0;
@@ -184,6 +136,16 @@
         top: 75%;
         left: 15px;
         max-width: 80%;
+        padding: 10px;
+      }
+
+      .overlay-box:hover {
+        transform: none !important;
+      }
+
+
+      .overlay-box h4 {
+        font-size: 1.2rem;
       }
 
       .overlay-box p {
@@ -199,13 +161,11 @@
 
     .arrow-right i {
       font-size: 1.5rem;
-      color: #000;
+      color: #000000;
       border: 1px solid #000;
       border-radius: 100%;
       padding: 1rem;
     }
-
-    /* ================= circle animation unchanged ================= */
 
     .circle-wrapper {
       position: absolute;
@@ -264,122 +224,152 @@
       height: 100%;
       object-fit: cover;
     }
+
+    @keyframes rotateText {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   </style>
+
 </head>
 
 <body>
 
   <div class="header-top">
     <div class="menu-logo">
+      <!-- <div class="menu-icon" id="menuToggle">&#9776;</div> -->
       <div class="logo">
-        <a href="/index.html" style="text-decoration: none;color: inherit;">Jpkr..</a>
+        <a href="/index.html" style="text-decoration: none;color: inherit;">
+          Jpkr..</a>
       </div>
+     
     </div>
   </div>
 
-  <div id="heroCarousel" class="carousel slide">
-
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="false">
     <div class="carousel-inner">
+      <a>
+        <div class="carousel-item active">
+          <div class="slider_img">
+            <picture>
+              <source media="(max-width: 768px)" srcset="images/slider1mob.jpeg">
+              <img src="images/slider1.jpeg" class="slider" alt="JPKR">
+            </picture>
+            <div class="circle-wrapper">
+              <div class="rotating-text circleText" ></div>
 
-      <!-- SLIDE 1 -->
-      <div class="carousel-item active">
-        <div class="slider_img">
-          <div class="slider slide1"></div>
-
-          <div class="circle-wrapper">
-            <div class="rotating-text circleText"></div>
-            <div class="circle-image">
-              <img src="images/slider4mob.jpeg">
+              <div class="circle-image">
+                <img src="images/slider4mob.jpeg" alt="circle">
+              </div>
+            </div>
+            <div class="overlay-box">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
+                sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
+              </p>
+              <a href="/intro.html">
+                <div class="arrow-right">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </a>
             </div>
           </div>
-
-          <div class="overlay-box">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed, temporibus facilis laboriosam, optio unde
-              eos doloribus distinctio enim dolores pariatur beatae esse, architecto iste sint veritatis hic velit
-              ratione sequi!</p>
-            <a href="/intro.html">
-              <div class="arrow-right"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-          </div>
         </div>
-      </div>
+      </a>
+      <a>
+        <div class="carousel-item">
+          <div class="slider_img">
+            <picture>
+              <source media="(max-width: 768px)" srcset="images/slider2mob.jpeg">
+              <img src="images/slider2.jpeg" class="slider" alt="JPKR">
+            </picture>
+            <div class="circle-wrapper">
+              <div class="rotating-text circleText" ></div>
 
-      <!-- SLIDE 2 -->
-      <div class="carousel-item">
-        <div class="slider_img">
-          <div class="slider slide2"></div>
-          <div class="circle-wrapper">
-            <div class="rotating-text circleText"></div>
-            <div class="circle-image">
-              <img src="images/slider4mob.jpeg">
+              <div class="circle-image">
+                <img src="images/slider4mob.jpeg" alt="circle">
+              </div>
+            </div>
+            <div class="overlay-box">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
+                sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
+              </p>
+              <a href="/intro.html">
+                <div class="arrow-right">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </a>
             </div>
           </div>
-
-          <div class="overlay-box">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed, temporibus facilis laboriosam, optio unde
-              eos doloribus distinctio enim dolores pariatur beatae esse, architecto iste sint veritatis hic velit
-              ratione sequi!</p> <a href="/intro.html">
-              <div class="arrow-right"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-          </div>
         </div>
-      </div>
+      </a>
+      <a>
+        <div class="carousel-item">
+          <div class="slider_img">
+            <picture>
+              <source media="(max-width: 768px)" srcset="images/slider3mob.jpeg">
+              <img src="images/slider3.jpeg" class="slider" alt="JPKR">
+            </picture>
+            <div class="circle-wrapper">
+              <div class="rotating-text circleText" ></div>
 
-      <!-- SLIDE 3 -->
-      <div class="carousel-item">
-        <div class="slider_img">
-          <div class="slider slide3"></div>
-          <div class="circle-wrapper">
-            <div class="rotating-text circleText"></div>
-            <div class="circle-image">
-              <img src="images/slider4mob.jpeg">
+              <div class="circle-image">
+                <img src="images/slider4mob.jpeg" alt="circle">
+              </div>
+            </div>
+            <div class="overlay-box">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
+                sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
+              </p>
+              <a href="/intro.html">
+                <div class="arrow-right">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </a>
             </div>
           </div>
-
-          <div class="overlay-box">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed, temporibus facilis laboriosam, optio unde
-              eos doloribus distinctio enim dolores pariatur beatae esse, architecto iste sint veritatis hic velit
-              ratione sequi!</p> <a href="/intro.html">
-              <div class="arrow-right"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-          </div>
         </div>
-      </div>
+      </a>
+      <a>
+        <div class="carousel-item">
+          <div class="slider_img">
+            <picture>
+              <source media="(max-width: 768px)" srcset="images/slider4mob.jpeg">
+              <img src="images/slider4.jpeg" class="slider" alt="JPKR">
+            </picture>
+            <div class="circle-wrapper">
+              <div class="rotating-text circleText" ></div>
 
-      <!-- SLIDE 4 -->
-      <div class="carousel-item">
-        <div class="slider_img">
-          <div class="slider slide4"></div>
-          <div class="circle-wrapper">
-            <div class="rotating-text circleText"></div>
-            <div class="circle-image">
-              <img src="images/slider4mob.jpeg">
+              <div class="circle-image">
+                <img src="images/slider4mob.jpeg" alt="circle">
+              </div>
+            </div>
+            <div class="overlay-box">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati natus officiis
+                sequi, perferendis iste ipsum aut vitae vel fugiat sed. Quod blanditiis numquam officia, eius rem ab?
+              </p>
+              <a href="/intro.html">
+                <div class="arrow-right">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </a>
             </div>
           </div>
-
-          <div class="overlay-box">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed, temporibus facilis laboriosam, optio unde
-              eos doloribus distinctio enim dolores pariatur beatae esse, architecto iste sint veritatis hic velit
-              ratione sequi!</p>
-            <a href="/intro.html">
-              <div class="arrow-right"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-          </div>
         </div>
-      </div>
-
+      </a>
     </div>
 
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
       <i class="fa-solid fa-chevron-left fa-2xl"></i>
     </button>
-
     <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
       <i class="fa-solid fa-chevron-right fa-2xl"></i>
     </button>
-
   </div>
-
   <script>
     const containers = document.querySelectorAll(".circleText");
     const content = "Justice P Kodanada Ramayya, 1926--2026, Centenary Celebrations ";
@@ -395,18 +385,15 @@
         span.innerText = char;
 
         span.style.transform = `
-        rotate(${i * angleStep}deg)
-        translate(${radius}px)
-        rotate(90deg)
-      `;
+      rotate(${i * angleStep}deg)
+      translate(${radius}px)
+      rotate(90deg)
+    `;
 
         container.appendChild(span);
       });
-    });
-  </script>
-
+    });  </script>
   <script src="script.js"></script>
-
 </body>
 
 </html>

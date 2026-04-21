@@ -15,12 +15,19 @@
         rel="stylesheet">
     <style>
         .down-arrow {
-            font-size: 25px;
-            margin: 10px;
-            padding: 5px;
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             border: 1px solid #80422c;
-            border-radius: 100%;
+            border-radius: 50%;
             color: #80422c;
+
+            font-size: 18px;
+            text-decoration: none;
         }
 
         .down-arrow i {
@@ -415,7 +422,7 @@
     </div>
 
     <div class="container d-flex flex-row justify-content-center align-items-center">
-        <div class="intro-img" style="width: 65%;">
+        <div class="intro-img mt-3" style="width: 65%;">
             <img src="/images/lawyer.jpg" alt="Placeholder" width="100%">
             <p class="sign">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id praesentium iure, obcaecati
                 natus
@@ -424,7 +431,9 @@
             </p>
         </div>
         <div>
-            <a class="down-arrow" style="text-decoration: none;" href="/home.html"><i class="fa fa-arrow-right"></i></a>
+            <a class="down-arrow" href="/home.html">
+                <i class="fa fa-arrow-right"></i>
+            </a>
         </div>
     </div>
     <script src="/script.js"></script>

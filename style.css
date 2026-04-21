@@ -34,15 +34,13 @@
   cursor: pointer;
 }
 
-/* Header 2 */
 .header-bottom {
-  display: flex;
-  justify-content: flex-start;
-  background-color: #fff;
-  padding: 1rem 0rem 0rem 10rem;
+  padding: 0.5rem 10rem;
   position: relative;
-  z-index: 15;
   border-bottom: 2px solid #ebebeb;
+  z-index: 12;
+  justify-content: space-between;
+  display: flex;
 }
 
 .header-bottom .menu-item {
@@ -51,8 +49,7 @@
   cursor: pointer;
   font-weight: 500;
   text-transform: uppercase;
-  width: 7%;
-  font-size: 10px;
+  font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,7 +68,7 @@
 .header-dropdown-container {
   display: none;
   position: fixed;
-  top: 95px;
+  top: 105px;
   left: 15rem;
   width: 65%;
   background: #fff;
@@ -263,7 +260,8 @@
 
 @font-face {
   font-family: "Noricon";
-  src: url("../fonts/Norican.otf") format("opentype"),
+  src:
+    url("../fonts/Norican.otf") format("opentype"),
     url("../fonts/Norican-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -302,7 +300,6 @@ p {
   flex-wrap: wrap;
   height: fit-content;
 }
-
 
 .hidden-section {
   display: none;
