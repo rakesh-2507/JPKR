@@ -23,7 +23,8 @@
     body {
       scrollbar-width: none;
     }
-    a{
+
+    a {
       text-decoration: none;
     }
 
@@ -97,10 +98,6 @@
       background: rgba(0, 0, 0, 0.85);
     }
 
-    /* =========================
-       FULL SCREEN SLIDER FIX
-    ========================= */
-
     .carousel-item {
       height: 100vh;
     }
@@ -155,18 +152,16 @@
       }
     }
 
-    /* ================= overlay unchanged ================= */
-
     .overlay-box {
       position: absolute;
-      top: 50%;
-      left: 15%;
+      top: 45%;
+      left: 10%;
       background: rgb(255 255 255 / 60%);
       color: #fff;
       padding: 10px;
       border-radius: 10px;
-      min-width: 200px;
-      max-width: 400px;
+      min-width: 300px;
+      max-width: 500px;
     }
 
     .overlay-box p {
@@ -177,18 +172,6 @@
       padding-top: 5px;
       font-family: "Mr De Haviland", cursive;
       padding: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .overlay-box {
-        top: 75%;
-        left: 15px;
-        max-width: 80%;
-      }
-
-      .overlay-box p {
-        font-size: 0.8rem;
-      }
     }
 
     .arrow-right {
@@ -204,8 +187,6 @@
       border-radius: 100%;
       padding: 1rem;
     }
-
-    /* ================= circle animation unchanged ================= */
 
     .circle-wrapper {
       position: absolute;
@@ -264,6 +245,39 @@
       height: 100%;
       object-fit: cover;
     }
+
+
+    @media (max-width: 768px) {
+      .overlay-box {
+        top: 60%;
+        left: 15px;
+        max-width: 60%;
+        min-width: 90%;
+      }
+
+      .overlay-box p {
+        font-size: 0.8rem;
+      }
+
+      .circle-wrapper {
+        top: 10%;
+        left: 73%;
+        transform: translateX(0%);
+        width: 150px;
+        height: 0;
+      }
+
+      .circle-image {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    @media (max-width: 380px) {
+          .circle-wrapper {
+          width: 15%;
+          }
+    }
+
   </style>
 </head>
 
@@ -384,26 +398,35 @@
     const containers = document.querySelectorAll(".circleText");
     const content = "Justice P Kodanada Ramayya, 1926--2026, Centenary Celebrations ";
 
-    const radius = 120;
-    const angleStep = 360 / content.length;
+    function getRadius() {
+      return window.innerWidth <= 768 ? 70 : 120;
+    }
 
-    containers.forEach(container => {
-      container.innerHTML = "";
+    function renderCircleText() {
+      const radius = getRadius();
+      const angleStep = 360 / content.length;
 
-      content.split("").forEach((char, i) => {
-        const span = document.createElement("span");
-        span.innerText = char;
+      containers.forEach(container => {
+        container.innerHTML = "";
 
-        span.style.transform = `
+        content.split("").forEach((char, i) => {
+          const span = document.createElement("span");
+          span.innerText = char;
+
+          span.style.transform = `
         rotate(${i * angleStep}deg)
         translate(${radius}px)
         rotate(90deg)
       `;
 
-        container.appendChild(span);
+          container.appendChild(span);
+        });
       });
-    });
-  </script>
+    }
+
+    renderCircleText();
+
+    window.addEventListener("resize", renderCircleText);  </script>
 
   <script src="script.js"></script>
 
